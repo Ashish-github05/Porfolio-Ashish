@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://Ashish-github05.github.io/Porfolio-Ashish",
+  "homepage": "https://ashish-github05.github.io/Portfolio-Ashish",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
