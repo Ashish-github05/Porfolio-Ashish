@@ -10,7 +10,7 @@ async function bootstrap() {
       'http://localhost:5173', 
       'http://localhost:3000', 
       'http://localhost:4173',
-      'https://Ashish-github05.github.io',
+      'https://ashish-github05.github.io',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
