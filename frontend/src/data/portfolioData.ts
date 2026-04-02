@@ -138,7 +138,7 @@ export const projects = [
     title: 'BSES Rajdhani Power Portal',
     description:
       'Power distribution management portal for BSES Rajdhani (Delhi). Includes consumer billing, outage management, connection request handling, and real-time power load dashboards.',
-    tech: ['React', 'PHP', 'MySQL', 'CakePHP', 'Bootstrap'],
+    tech: ['React', 'Node.js', 'MySQL', 'REST API', 'Material UI'],
     demo: 'https://rts.bsesdelhi.com/',
     category: 'Full Stack',
     tags: ['Full Stack', 'Backend'],
@@ -150,7 +150,7 @@ export const projects = [
     title: 'PMT 2.0',
     description:
       'Project Management Tool v2.0 — a comprehensive platform for tracking tasks, milestones, team assignments, and project progress with interactive Gantt charts and reporting.',
-    tech: ['React', 'NestJS', 'TypeScript', 'MySQL', 'Chart.js'],
+    tech: ['React', 'NestJS', 'TypeScript', 'MySQL'],
     demo: 'https://ahasolar.in/',
     category: 'Full Stack',
     tags: ['Full Stack', 'Backend'],
@@ -174,7 +174,7 @@ export const projects = [
     title: 'GEDA EV Portal',
     description:
       'Gujarat Energy Development Agency (GEDA) Electric Vehicle portal for managing EV subsidy applications, dealer registrations, vehicle approvals, and state-level EV adoption reporting.',
-    tech: ['React', 'PHP', 'CakePHP', 'MySQL', 'REST API'],
+    tech: ['React', 'NestJS', 'TypeScript', 'MySQL'],
     demo: 'https://gedaev.in/',
     category: 'Frontend',
     tags: ['Frontend'],
