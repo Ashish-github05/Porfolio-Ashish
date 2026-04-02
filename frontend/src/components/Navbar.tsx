@@ -127,7 +127,7 @@ export default function Navbar() {
             className="hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-colors shadow-lg shadow-green-500/25"
           >
             <FiCalendar size={15} />
-            Book Interview
+            Book Meeting
           </motion.button>
 
           {/* Mobile hamburger */}

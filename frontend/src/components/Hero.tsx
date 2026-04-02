@@ -18,7 +18,7 @@ const terminalLines = [
   { text: '  Name    : Ashish Kumar', color: 'text-slate-300', delay: 700 },
   { text: '  Role    : Full Stack Developer', color: 'text-slate-300', delay: 1000 },
   { text: '  Stack   : React · NestJS · TypeScript', color: 'text-slate-300', delay: 1300 },
-  { text: '  Based   : Bangalore, India', color: 'text-slate-300', delay: 1600 },
+  { text: '  Based   : Ahmedabad, India', color: 'text-slate-300', delay: 1600 },
   { text: '  Status  :  Open to opportunities', color: 'text-green-400', delay: 1900 },
   { text: '', delay: 2200 },
   { text: '$ skills --top', color: 'text-green-400', delay: 2500 },
