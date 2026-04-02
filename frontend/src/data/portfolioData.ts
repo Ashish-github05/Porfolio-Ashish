@@ -27,9 +27,9 @@ export const skillCategories = [
     icon: 'monitor',
     gradient: 'from-blue-500 to-cyan-500',
     skills: [
-      { name: 'React', level: 85 },
-      { name: 'TypeScript', level: 75 },
-      { name: 'JavaScript', level: 85 },
+      { name: 'React', level: 75 },
+      { name: 'TypeScript', level: 70 },
+      { name: 'JavaScript', level: 80 },
       { name: 'HTML / CSS', level: 90 },
       { name: 'Tailwind CSS', level: 80 },
       { name: 'Next.js', level: 80 },
@@ -40,12 +40,12 @@ export const skillCategories = [
     icon: 'server',
     gradient: 'from-green-500 to-emerald-500',
     skills: [
-      { name: 'Node.js', level: 90 },
-      { name: 'NestJS', level: 85 },
+      { name: 'Node.js', level: 80 },
+      { name: 'NestJS', level: 70 },
       { name: 'PHP', level: 75 },
       { name: 'CakePHP', level: 70 },
       { name: 'Express.js', level: 85 },
-      { name: 'REST APIs', level: 92 },
+      { name: 'REST APIs', level: 80 },
     ],
   },
   {
@@ -53,10 +53,10 @@ export const skillCategories = [
     icon: 'database',
     gradient: 'from-orange-500 to-red-500',
     skills: [
-      { name: 'MySQL', level: 88 },
-      { name: 'MongoDB', level: 82 },
-      { name: 'PostgreSQL', level: 78 },
-      { name: 'Redis', level: 72 },
+      { name: 'MySQL', level: 85 },
+      { name: 'MongoDB', level: 75 },
+      { name: 'PostgreSQL', level: 65 },
+      { name: 'Redis', level: 70 },
     ],
   },
   {
