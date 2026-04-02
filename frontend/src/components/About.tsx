@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion'
-import {
-  FaGithub, FaLinkedin, FaTwitter,
-} from 'react-icons/fa'
-import { FiDownload, FiMapPin, FiMail } from 'react-icons/fi'
+import { FiMapPin, FiMail } from 'react-icons/fi'
 import { SiReact, SiNodedotjs, SiTypescript, SiNestjs, SiDocker, SiMongodb, SiMysql } from 'react-icons/si'
 import { FaAws } from 'react-icons/fa'
 import { personalInfo } from '../data/portfolioData'
@@ -96,42 +93,34 @@ export default function About() {
               </p>
             </div>
 
-            {/* Social + Download */}
-            <div className={`rounded-2xl p-6 ${card} flex flex-wrap items-center justify-between gap-4`}>
-              <div className="flex gap-3">
-                {[
-                  { Icon: FaGithub, href: personalInfo.github, label: 'GitHub' },
-                  { Icon: FaLinkedin, href: personalInfo.linkedin, label: 'LinkedIn', color: 'hover:text-blue-400' },
-                  { Icon: FaTwitter, href: personalInfo.twitter, label: 'Twitter', color: 'hover:text-sky-400' },
-                ].map(({ Icon, href, label, color = 'hover:text-white' }) => (
-                  <motion.a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.15, y: -2 }}
-                    aria-label={label}
-                    className={`p-2.5 rounded-xl transition-all ${
-                      isDark
-                        ? `text-gray-400 hover:bg-white/5 ${color}`
-                        : `text-gray-500 hover:bg-gray-100 ${color}`
-                    }`}
-                  >
-                    <Icon size={20} />
-                  </motion.a>
-                ))}
+            {/* Education */}
+            <div className={`rounded-2xl p-6 ${card}`}>
+              <h4 className={`font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Education</h4>
+              <div className="space-y-4">
+                {/* BCA */}
+                <div className={`p-4 rounded-xl ${isDark ? 'bg-dark-bg/60' : 'bg-gray-50'}`}>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-400">MCA (PG)</span>
+                    <span className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>2022 – 2024</span>
+                  </div>
+                  <p className={`font-semibold text-sm mt-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    Vellore Institute of Technology
+                  </p>
+                  <p className={`text-xs mt-1 font-medium text-primary-400`}>CGPA: 8.2 / 10</p>
+                </div>
+
+                {/* MCA */}
+                <div className={`p-4 rounded-xl ${isDark ? 'bg-dark-bg/60' : 'bg-gray-50'}`}>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-400">BCA (UG)</span>
+                    <span className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>2019 – 2022</span>
+                  </div>
+                  <p className={`font-semibold text-sm mt-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    CIMAGE Professional College
+                  </p>
+                  <p className={`text-xs mt-1 font-medium text-purple-400`}>CGPA: 9.2 / 10</p>
+                </div>
               </div>
-              <motion.a
-                href={personalInfo.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-colors"
-              >
-                <FiDownload size={15} />
-                Download CV
-              </motion.a>
             </div>
           </motion.div>
 
