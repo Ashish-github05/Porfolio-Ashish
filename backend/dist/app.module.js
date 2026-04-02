@@ -13,6 +13,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const contact_module_1 = require("./contact/contact.module");
 const portfolio_module_1 = require("./portfolio/portfolio.module");
+const chatbot_module_1 = require("./chatbot/chatbot.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -22,6 +23,7 @@ exports.AppModule = AppModule = __decorate([
             config_1.ConfigModule.forRoot({ isGlobal: true }),
             contact_module_1.ContactModule,
             portfolio_module_1.PortfolioModule,
+            chatbot_module_1.ChatbotModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

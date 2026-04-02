@@ -37,6 +37,12 @@ let PortfolioController = class PortfolioController {
     getTestimonials() {
         return this.portfolioService.getTestimonials();
     }
+    getVisitorCount() {
+        return this.portfolioService.getVisitorCount();
+    }
+    incrementVisitorCount() {
+        return this.portfolioService.incrementVisitorCount();
+    }
 };
 exports.PortfolioController = PortfolioController;
 __decorate([
@@ -81,6 +87,18 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], PortfolioController.prototype, "getTestimonials", null);
+__decorate([
+    (0, common_1.Get)('visitors'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PortfolioController.prototype, "getVisitorCount", null);
+__decorate([
+    (0, common_1.Post)('visitors'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PortfolioController.prototype, "incrementVisitorCount", null);
 exports.PortfolioController = PortfolioController = __decorate([
     (0, common_1.Controller)('portfolio'),
     __metadata("design:paramtypes", [portfolio_service_1.PortfolioService])

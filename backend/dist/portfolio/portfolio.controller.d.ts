@@ -142,4 +142,10 @@ export declare class PortfolioController {
         text: string;
         rating: number;
     }[];
+    getVisitorCount(): {
+        count: number;
+    };
+    incrementVisitorCount(): {
+        count: number;
+    };
 }

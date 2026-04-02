@@ -8,6 +8,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PortfolioService = void 0;
 const common_1 = require("@nestjs/common");
+const fs = require("fs");
+const path = require("path");
+const VISITORS_FILE = path.join(__dirname, '..', '..', 'data', 'visitors.json');
+function readCount() {
+    try {
+        const dir = path.dirname(VISITORS_FILE);
+        if (!fs.existsSync(dir))
+            fs.mkdirSync(dir, { recursive: true });
+        if (!fs.existsSync(VISITORS_FILE)) {
+            fs.writeFileSync(VISITORS_FILE, JSON.stringify({ count: 0 }));
+            return 0;
+        }
+        const data = JSON.parse(fs.readFileSync(VISITORS_FILE, 'utf-8'));
+        return data.count || 0;
+    }
+    catch {
+        return 0;
+    }
+}
+function writeCount(count) {
+    try {
+        const dir = path.dirname(VISITORS_FILE);
+        if (!fs.existsSync(dir))
+            fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(VISITORS_FILE, JSON.stringify({ count }));
+    }
+    catch {
+    }
+}
 let PortfolioService = class PortfolioService {
     getPersonalInfo() {
         return {
@@ -25,8 +54,8 @@ let PortfolioService = class PortfolioService {
             stats: [
                 { label: 'Years Experience', value: '2+' },
                 { label: 'Projects Completed', value: '5+' },
-                { label: 'Happy Clients', value: '20+' },
-                { label: 'Technologies', value: '20+' },
+                { label: 'Happy Clients', value: '3+' },
+                { label: 'Technologies', value: '10+' },
             ],
         };
     }
@@ -37,11 +66,11 @@ let PortfolioService = class PortfolioService {
                 icon: 'monitor',
                 color: 'from-blue-500 to-cyan-500',
                 items: [
-                    { name: 'React', level: 95 },
-                    { name: 'TypeScript', level: 90 },
-                    { name: 'JavaScript', level: 95 },
-                    { name: 'HTML / CSS', level: 92 },
-                    { name: 'Tailwind CSS', level: 88 },
+                    { name: 'React', level: 85 },
+                    { name: 'TypeScript', level: 75 },
+                    { name: 'JavaScript', level: 85 },
+                    { name: 'HTML / CSS', level: 90 },
+                    { name: 'Tailwind CSS', level: 80 },
                     { name: 'Next.js', level: 80 },
                 ],
             },
@@ -74,12 +103,12 @@ let PortfolioService = class PortfolioService {
                 icon: 'tool',
                 color: 'from-purple-500 to-pink-500',
                 items: [
-                    { name: 'Git & GitHub', level: 95 },
-                    { name: 'Docker', level: 82 },
-                    { name: 'AWS', level: 76 },
-                    { name: 'CI/CD', level: 78 },
-                    { name: 'Linux', level: 80 },
-                    { name: 'Nginx', level: 72 },
+                    { name: 'Git & GitHub', level: 85 },
+                    { name: 'Docker', level: 75 },
+                    { name: 'AWS', level: 75 },
+                    { name: 'CI/CD', level: 70 },
+                    { name: 'Linux', level: 65 },
+                    { name: 'Nginx', level: 65 },
                 ],
             },
         ];
@@ -259,6 +288,14 @@ let PortfolioService = class PortfolioService {
                 rating: 5,
             },
         ];
+    }
+    getVisitorCount() {
+        return { count: readCount() };
+    }
+    incrementVisitorCount() {
+        const count = readCount() + 1;
+        writeCount(count);
+        return { count };
     }
     getAllData() {
         return {

@@ -68,6 +68,12 @@ export declare class PortfolioService {
         text: string;
         rating: number;
     }[];
+    getVisitorCount(): {
+        count: number;
+    };
+    incrementVisitorCount(): {
+        count: number;
+    };
     getAllData(): {
         personal: {
             name: string;

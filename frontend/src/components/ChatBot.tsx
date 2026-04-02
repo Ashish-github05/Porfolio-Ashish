@@ -56,7 +56,10 @@ export default function ChatBot() {
         body: JSON.stringify({ messages: newMessages }),
       })
 
-      if (!res.ok || !res.body) throw new Error('Network error')
+      if (!res.ok || !res.body) {
+        const errText = await res.text().catch(() => '')
+        throw new Error(`HTTP ${res.status}: ${errText || res.statusText}`)
+      }
 
       const reader = res.body.getReader()
       const decoder = new TextDecoder()
@@ -98,12 +101,13 @@ export default function ChatBot() {
           }
         }
       }
-    } catch {
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Unknown error'
       setMessages((prev) => {
         const copy = [...prev]
         copy[copy.length - 1] = {
           role: 'assistant',
-          content: 'Sorry, I could not connect right now. Please try again later.',
+          content: `Error: ${msg}`,
         }
         return copy
       })
