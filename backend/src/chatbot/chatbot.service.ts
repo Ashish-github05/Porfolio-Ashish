@@ -10,7 +10,7 @@ const SYSTEM_PROMPT = `You are an AI assistant on Ashish Kumar's portfolio websi
 - GitHub: https://github.com/Ashish-github05
 - LinkedIn: https://www.linkedin.com/in/ashish-kumar05/
 - Resume: https://drive.google.com/file/d/17Pu1TyPxrTzAHbUblmH6eIOq_yZGW6LJ/view?usp=sharing
-- Stats: 2+ years experience, 15+ projects delivered, 20+ happy clients, 20+ technologies
+- Stats: 2+ years experience, 5+ projects delivered, 3+ happy clients, 10+ technologies
 
 ## Skills
 **Frontend:** React (75%), JavaScript (80%), HTML/CSS (90%), Tailwind CSS (80%), TypeScript (70%), Next.js (80%)
