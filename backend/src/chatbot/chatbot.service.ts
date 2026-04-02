@@ -51,7 +51,7 @@ export class ChatbotService {
 
   async *streamChat(messages: { role: 'user' | 'assistant'; content: string }[]) {
     const model = this.genAI.getGenerativeModel({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-1.5-flash',
       systemInstruction: SYSTEM_PROMPT,
     });
 

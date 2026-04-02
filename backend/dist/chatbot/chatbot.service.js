@@ -58,7 +58,7 @@ let ChatbotService = class ChatbotService {
     }
     async *streamChat(messages) {
         const model = this.genAI.getGenerativeModel({
-            model: 'gemini-2.0-flash',
+            model: 'gemini-1.5-flash',
             systemInstruction: SYSTEM_PROMPT,
         });
         const history = messages.slice(0, -1).map((m) => ({
