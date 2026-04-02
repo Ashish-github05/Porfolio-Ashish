@@ -1,5 +1,5 @@
 export declare class ChatbotService {
-    private genAI;
+    private groq;
     streamChat(messages: {
         role: 'user' | 'assistant';
         content: string;

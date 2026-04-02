@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import Groq from 'groq-sdk';
 
 const SYSTEM_PROMPT = `You are an AI assistant on Ashish Kumar's portfolio website. Be friendly, concise, and helpful. Keep replies under 150 words unless more detail is clearly needed.
 
@@ -47,27 +47,21 @@ const SYSTEM_PROMPT = `You are an AI assistant on Ashish Kumar's portfolio websi
 
 @Injectable()
 export class ChatbotService {
-  private genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY ?? '');
+  private groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
   async *streamChat(messages: { role: 'user' | 'assistant'; content: string }[]) {
-    const model = this.genAI.getGenerativeModel({
-      model: 'gemini-1.5-flash',
-      systemInstruction: SYSTEM_PROMPT,
+    const stream = await this.groq.chat.completions.create({
+      model: 'llama-3.1-8b-instant',
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        ...messages,
+      ],
+      max_tokens: 1024,
+      stream: true,
     });
 
-    // Convert messages to Gemini format (role: 'user' | 'model')
-    const history = messages.slice(0, -1).map((m) => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: m.content }],
-    }));
-
-    const lastMessage = messages[messages.length - 1];
-
-    const chat = model.startChat({ history });
-    const result = await chat.sendMessageStream(lastMessage.content);
-
-    for await (const chunk of result.stream) {
-      const text = chunk.text();
+    for await (const chunk of stream) {
+      const text = chunk.choices[0]?.delta?.content ?? '';
       if (text) yield text;
     }
   }

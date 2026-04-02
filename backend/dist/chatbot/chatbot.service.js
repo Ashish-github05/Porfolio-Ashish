@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChatbotService = void 0;
 const common_1 = require("@nestjs/common");
-const generative_ai_1 = require("@google/generative-ai");
+const groq_sdk_1 = require("groq-sdk");
 const SYSTEM_PROMPT = `You are an AI assistant on Ashish Kumar's portfolio website. Be friendly, concise, and helpful. Keep replies under 150 words unless more detail is clearly needed.
 
 ## About Ashish Kumar
@@ -54,22 +54,20 @@ const SYSTEM_PROMPT = `You are an AI assistant on Ashish Kumar's portfolio websi
 - Do not fabricate information not listed above`;
 let ChatbotService = class ChatbotService {
     constructor() {
-        this.genAI = new generative_ai_1.GoogleGenerativeAI(process.env.GEMINI_API_KEY ?? '');
+        this.groq = new groq_sdk_1.default({ apiKey: process.env.GROQ_API_KEY });
     }
     async *streamChat(messages) {
-        const model = this.genAI.getGenerativeModel({
-            model: 'gemini-1.5-flash',
-            systemInstruction: SYSTEM_PROMPT,
+        const stream = await this.groq.chat.completions.create({
+            model: 'llama-3.1-8b-instant',
+            messages: [
+                { role: 'system', content: SYSTEM_PROMPT },
+                ...messages,
+            ],
+            max_tokens: 1024,
+            stream: true,
         });
-        const history = messages.slice(0, -1).map((m) => ({
-            role: m.role === 'assistant' ? 'model' : 'user',
-            parts: [{ text: m.content }],
-        }));
-        const lastMessage = messages[messages.length - 1];
-        const chat = model.startChat({ history });
-        const result = await chat.sendMessageStream(lastMessage.content);
-        for await (const chunk of result.stream) {
-            const text = chunk.text();
+        for await (const chunk of stream) {
+            const text = chunk.choices[0]?.delta?.content ?? '';
             if (text)
                 yield text;
         }
